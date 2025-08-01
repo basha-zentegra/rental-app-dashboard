@@ -1,0 +1,151 @@
+body{
+    height: 100vh;
+}
+.pipeline-container {
+    display: flex;
+    align-items: center;
+    border: 1px solid rgb(178, 178, 178);
+    border-radius: 50px;
+    width: max-content;
+    /* height: ; */
+}
+
+.status-item {
+    position: relative;
+    padding: 8px 25px 8px 35px;
+    font-size: 14px;
+    color: #555555;
+    height: 32px;
+    line-height: 16px;
+    display: flex;
+    align-items: center;
+    clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 50%, calc(100% - 12px) 100%, 0 100%, 12px 50%);
+    margin-right: -12px;
+    width: 180px;
+    font-weight: 500;
+
+}
+
+.status-item:first-child {
+    clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 50%, calc(100% - 12px) 100%, 0 100%);
+    padding-left: 15px;
+    border-top-left-radius: 16px;
+    border-bottom-left-radius: 16px;
+}
+
+.status-item:last-child {
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%, 12px 50%);
+    margin-right: 0;
+    padding-right: 15px;
+}
+
+.status-item.new-leads {
+    background-color: #a9efef;
+    color: #333;
+}
+
+
+/* menu withou js  */
+
+.tab-wrapper {
+  margin-top: 1rem;
+}
+
+/* Hide radio buttons */
+input[name="tabset"] {
+  display: none;
+}
+
+/* Style tab labels */
+.tab-label {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  /* background: #f1f1f1; */
+  margin-right: 4px;
+  /* border: 1px solid #ccc; */
+  border-bottom: none;
+  border-radius: 5px 5px 0 0;
+  transition: background 0.3s, color 0.3s;
+  font-weight: 500;
+  color: grey;
+}
+
+/* Active tab highlighting */
+#tab1:checked ~ label[for="tab1"],
+#tab2:checked ~ label[for="tab2"],
+#tab3:checked ~ label[for="tab3"],
+#tab4:checked ~ label[for="tab4"],
+#tab5:checked ~ label[for="tab5"],
+#tab6:checked ~ label[for="tab6"],
+#tab7:checked ~ label[for="tab7"] {
+  background: #ffffff;
+  border-bottom: 1px solid #ffffff;
+  font-weight: bold;
+  color: green;
+}
+
+/* Tab panel base styles */
+.tab-panel {
+  display: none;
+  padding: 1rem;
+  /* border: 1px solid #ccc; */
+  border-top: none;
+  background: #ffffff;
+  height: 500px;
+}
+
+/* Show the selected tab's panel */
+#tab1:checked ~ .tab-panel-1,
+#tab2:checked ~ .tab-panel-2,
+#tab3:checked ~ .tab-panel-3,
+#tab4:checked ~ .tab-panel-4,
+#tab5:checked ~ .tab-panel-5,
+#tab6:checked ~ .tab-panel-6,
+#tab7:checked ~ .tab-panel-7 {
+  display: block;
+}
+
+.vertical-line {
+  width: 1px;
+  height: 200px; /* or 100%, or any px/rem value */
+  background-color: #ccc; /* or any color you prefer */
+  margin: 1rem auto;
+  position: absolute;
+  left: 63px;
+  top: 100px;
+  z-index: 2;
+  /* top: 0; */
+}
+
+
+.vertical-line-2 {
+  width: 1px;
+  height: 110px; /* or 100%, or any px/rem value */
+  background-color: #ccc; /* or any color you prefer */
+  margin: 0rem 3rem ;
+  align-content: flex-start;
+
+}
+
+
+@media screen and (min-width: 1280px) and (max-width: 1440px) {
+  /* Styles for 13-inch laptops */
+  .status-item {
+    
+    padding: 8px 25px 8px 22px;
+    width: 140px;
+
+
+}
+}
+@media screen and (min-width: 1440px) and (max-width: 1550px) {
+  /* Styles for 14-inch laptops */
+  .status-item {
+    
+    padding: 8px 25px 8px 35px;
+    width: 170px;
+
+
+}
+}
