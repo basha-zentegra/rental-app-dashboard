@@ -1,0 +1,61 @@
+.invoice-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.invoice-title::after {
+  content: "";
+  flex: 9;
+  border-bottom: 1px solid #000;
+}
+.invoice-title::before
+ {
+  content: "";
+  flex: 1;
+  border-bottom: 1px solid #000;
+}
+
+.invoice-title span {
+  font-size: 42px;
+  
+  padding: 0 10px;
+  white-space: nowrap;
+}
+
+table.table-borderless  tr  td{
+    padding: 1.5px !important;
+}
+
+td.text-end,
+th.text-end{
+    padding-top: 1px !important;
+    padding-bottom: 1px !important;
+}
+
+/* @media print and (size: A4), (min-width: 8.27in) and (max-width: 8.27in) {
+  body {
+    font-size: 10%;
+    margin: 1in;
+  }
+
+} */
+
+/* @media print and (min-width: 794px) and (max-width: 794px) {
+  body {
+    font-size: 10%;
+    margin: 96px; 
+  }
+  
+}
+
+
+
+@page {
+  size: A4 portrait;
+  margin: 1in;
+  font-size: 5%;
+  .container{
+    margin: 0px !important;
+  }
+} */

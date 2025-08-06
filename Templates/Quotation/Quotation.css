@@ -1,0 +1,34 @@
+.invoice-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.invoice-title::after {
+  content: "";
+  flex: 9;
+  border-bottom: 1px solid #000;
+}
+.invoice-title::before
+ {
+  content: "";
+  flex: 1;
+  border-bottom: 1px solid #000;
+}
+
+.invoice-title span {
+  font-size: 42px;
+  
+  padding: 0 10px;
+  white-space: nowrap;
+}
+
+table.table-borderless  tr  td{
+    padding: 0px !important;
+}
+
+td.text-end,
+th.text-end{
+    padding-top: 1px !important;
+    padding-bottom: 1px !important;
+}
