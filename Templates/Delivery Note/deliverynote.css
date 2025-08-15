@@ -32,3 +32,36 @@ th.text-end{
     padding-top: 1px !important;
     padding-bottom: 1px !important;
 }
+
+.page-break-avoid {
+    page-break-inside: avoid; 
+    break-inside: avoid;   
+       
+}
+@media print {
+	@page {
+        margin-top: 50px;
+        margin-bottom: 50px;
+    }
+	@page :first {
+        margin-top: 0; 
+    }
+	p {
+        font-size: 12px; 
+    }
+	li{
+        font-size: 12px;
+    }
+	body {
+        font-size: 8px; 
+    }
+
+    table {
+        font-size: 10px;
+    }
+    .page-break-avoid {
+        page-break-inside: avoid; 
+        break-inside: avoid; 
+		
+    }
+}
