@@ -1,0 +1,356 @@
+<%{
+	quotation_obj = Quotation[ID == input.quotation_id];
+	%>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quotation</title>
+	<style>
+	.invoice-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+
+
+.invoice-title::after {
+  content: "";
+  flex: 9;
+  border-bottom: 1px solid #000;
+}
+.invoice-title::before
+ {
+  content: "";
+  flex: 1;
+  border-bottom: 1px solid #000;
+}
+
+.invoice-title span {
+  font-size: 42px;
+  
+  padding: 0 10px;
+  white-space: nowrap;
+}
+
+table.table-borderless  tr  td{
+    padding: 0px !important;
+}
+
+td.text-end,
+th.text-end{
+    padding-top: 1px !important;
+    padding-bottom: 1px !important;
+}
+
+
+.page-break-avoid {
+    page-break-inside: avoid; 
+    break-inside: avoid;   
+       
+}
+@media print {
+	@page {
+        margin-top: 50px;
+        margin-bottom: 50px;
+    }
+	@page :first {
+        margin-top: 0; 
+    }
+	p {
+        font-size: 12px; 
+    }
+	li{
+        font-size: 12px;
+    }
+	body {
+        font-size: 8px; 
+    }
+
+    table {
+        font-size: 10px;
+    }
+    .page-break-avoid {
+        page-break-inside: avoid; 
+        break-inside: avoid; 
+		
+    }
+}
+	</style>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+
+    <link rel="stylesheet" href="Quotation.css">
+</head>
+<body>
+
+
+    <main class="container mt-4">
+        <header class="d-flex">
+            <div id="logo">
+                <img src="../Fern-logo.png" alt="">
+            </div>
+            <div class="address text-end ms-auto">
+                <p class="m-0">31st Street Al Quoz Industrial Area 4 , Dubai, UAE, 390902</p>
+                <p class="m-0"><strong>VAT#</strong> : 1003 0479 8000 003</p>
+                <p class="m-0">Phone: +971 4 388 0088</p>
+                <p class="m-0">Email: info@fern.ae</p>
+                <p class="m-0">Date: 21 Jul 2025</p>
+            </div>
+        </header>
+        <div class="invoice-title">
+            <span class="">Quotation</span>
+        </div>
+        <section class="text-end d-flex justify-content-end page-break-avoid">
+            <table class="table table-borderless" style="width: 35%;">
+
+                <tr>
+                    <td>Doc#:</td>
+                    <td><%=quotation_obj.Quotation_Number%></td>
+                </tr>
+                <tr>
+                    <td>KAM:</td>
+                    <td>Vasu</td>
+                </tr>
+            </table>
+        </section>
+        <section id="bill-to" class="d-flex justify-content-between page-break-avoid">
+            <div>
+
+			<p class="m-0"> <strong>Bill To: <%=quotation_obj.Bill_To.address_line_1%></strong></p>
+                
+                <p class="m-0"><%=quotation_obj.Bill_To.address_line_2%>,</p>
+                <p class="m-0"><%=quotation_obj.Bill_To.state_province%> (AE) <%=quotation_obj.Bill_To.country%></p>
+                
+                <p class="m-0">Phone: <%=quotation_obj.Contact.Phone_Number%></p>
+                <p class="m-0">Email: <%=quotation_obj.Contact.Email%></p>
+                <p class="m-0"><strong>VAT#</strong> : 1040 6203 5100 003</p>
+                
+
+            </div>
+            <div>
+
+                <table class="table table-borderless mt-2" >
+
+                <tr>
+                    <td style="width: 350px;">Event Name:</td>
+                    <td><%=quotation_obj.Event_Name%></td>
+                </tr>
+                <tr>
+                    <td>Delivery Date:</td>
+                    <td><%=quotation_obj.Delivery_Date%></td>
+                </tr>
+                <tr>
+                    <td>Event Date:</td>
+                //    <td><%=quotation_obj.Event_Date%></td>
+                </tr>
+                <tr>
+                    <td>Dismantle Date:</td>
+                     <td><%=quotation_obj.Dismantle_Date%></td>
+                </tr>
+                <tr>
+                    <td>Enquiry Reference:</td>
+                    <td>WhatsApp</td>
+                </tr>
+            </table>
+
+            </div>
+        </section> <br>
+        <section class="d-flex justify-content-between page-break-avoid">
+            <div>
+                <p class="m-0">Ordered By: <%=quotation_obj.Contact.Full_Name%></p>
+                <p class="m-0">Contact Number: <%=quotation_obj.Contact.Phone_Number%></p>
+            </div>
+            <div class="text-end">
+                <p class="m-0">Category: Rental</p>
+                <p class="m-0">Currency: AED</p>
+            </div>
+        </section><br>
+        <section class="page-break-avoid">
+            <table class="table table-bordered border-dark">
+                <thead>
+                    <tr>
+                        <th>S #</th>
+                        <th>Product Image</th>
+                        <th>Description</th>
+                        <th>Quantity</th>
+                        <th>Unit Price</th>
+                        
+                        <th>Taxable Amount</th>
+                        <th>Tax</th>
+                        <th>Tax Amount</th>
+                        <th style="width: 12%;">Subotal</th>
+                    </tr>
+                </thead>
+                <tbody>
+<%
+	for each  item_obj in Quotation_Subform[Quotation == quotation_obj.ID]
+	{
+		%>
+<tr>
+
+                        <td>1</td>
+                        <td><img style="width: 100px;" src="https://creator.zoho.com/api/v2/32demo1zentegra/rental-management-application/report/All_Products/<%=item_obj.Item_Name.ID%>/Product_Image/download" alt=""></td>
+                        <td><%=item_obj.Item_Name.Product_Name%><br><%=item_obj.Description%></td>
+                        <td><%=item_obj.Quantity%></td>
+                        <td><%=item_obj.Unit_Price%> AED</td>
+                        
+                        <td><%=item_obj.Taxable_Amount%> AED</td>
+                        <td><%=item_obj.Tax%>%</td>
+                        <td><%=item_obj.Tax_Amount%> AED</td>
+                        <td><%=item_obj.Subtotal%> AED</td>
+
+                    </tr>
+<%
+	}
+	%>
+<tr>
+                        <th colspan="8" class="text-end">Delivery Fee</th>
+                        <td class="text-end" ><%=quotation_obj.Delivery_Fee%></td>
+                    </tr>
+                    <tr>
+                        <th colspan="8" class="text-end">Subtotal Taxable Amount</th>
+                        <td class="text-end"><%=quotation_obj.Subtotal_Taxable_Amount%></td>
+                    </tr>
+                    <tr>
+                        <th colspan="8" class="text-end">Discount</th>
+                        <td class="text-end"><%=quotation_obj.Discount%></td>
+                    </tr>
+                    <tr>
+                        <th colspan="8" class="text-end">VAT</th>
+                        <td class="text-end"><%=quotation_obj.VAT_Amount%></td>
+                    </tr>
+                    <tr>
+                        <th colspan="8" class="text-end">NET TOTAL PAYABLE</th>
+                        <td class="text-end"><%=quotation_obj.Net_Total_Payable%></td>
+                    </tr>
+                    <tr>
+                        <th colspan="8" class="text-end">Advance Paid</th>
+                        <td class="text-end"><%=quotation_obj.Advance_Paid%></td>
+                    </tr>
+                    <tr>
+                        <th colspan="8" class="text-end">Balance Due</th>
+                        <td class="text-end"><%=quotation_obj.Balance_Due%></td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+
+        <br>
+        <section class="d-flex justify-content-between page-break-avoid">
+            <div>
+			<p><strong>Total Amount (in words):</strong> <%=ifnull(quotation_obj.Balance_Due,0).toWords("en-us")%></p>
+                <br>
+                <p class="fw-bold mb-1">Bank Details</p>
+                <table class="table table-borderless" >
+                    <tr>
+                        <td>Bank Name:</td>
+                        <td>WIO Bank</td>
+                    </tr>
+                    <tr>
+                        <td>Account Name:</td>
+                        <td>Fern Interior Decoration LLC</td>
+                    </tr>
+                    <tr>
+                        <td>Account Number:</td>
+                        <td>9700700933</td>
+                    </tr>
+                    <tr>
+                        <td>Currency:</td>
+                        <td>UAE Dirhams (AED)</td>
+                    </tr>
+                    <tr>
+                        <td>Swift Code:</td>
+                        <td>WIOBAEADXXX</td>
+                    </tr>
+                    <tr>
+                        <td>IBAN Number:</td>
+                        <td>AE 410860000009700700933</td>
+                    </tr>
+                </table>
+            </div>
+            <div style="width: 40%; border-left: 1px solid grey; align-content: center;">
+                <table class="table table-borderless text-center">
+                    <tr>
+                        <th>VAT%</th>
+                        <th>Assessable Value</th>
+                        <th>VAT Amount</th>
+                    </tr>
+                    <tr>
+                        <td><%=quotation_obj.VAT_Percentage%>%</td>
+                        <td><%=quotation_obj.Assessable_Value%> AED</td>
+                        <td><%=quotation_obj.VAT_Amount%> AED</td>
+                    </tr>
+                </table>
+            </div>
+        </section>
+        <br><br>
+        <section class="page-break-avoid">
+            <p><strong>Terms and Conditions:</strong></p>
+            <p class="m-0">Detailed Terms available on our website are applicable. Summarized as below:</p>
+            <ul>
+                <li>Bank or any transfer/payment charges on client's account</li>
+                <li>All Credit/Debit Card transactions are subject to a 3.25% processing fee</li>
+                <li>Payment Terms: 100% in advance upon confirmation</li>
+                <li>Quote validity: 7 days subject to availability and 100% payment. Quote is valid only for the quantity, duration, location, purpose and date(s) of even</li>
+                <li>All products supplied remain property of Fern Interior Decoration LLC</li>
+                <li>Damage, missing or lost items will be charged for at our current replacement rates</li>
+                <li>All licenses, permits and/or access passes to the venue to be arranged by Client in advance</li>
+                <li>Power, Water and access be provided by Client</li>
+                <li>By confirming the booking, you accept our terms and conditions, available on website, http://fern.ae and onrequest, which will prevail in all cases</li>
+                <li>Cancellation Policy: 25% of if cancelled 7 Days before the delivery, 50% charged 72 hours before the delivery. Thereafter 100% is chargeable</li>
+                <li>Computer generated document, needs no signature</li>
+            </ul>
+
+        </section>
+        <br>
+        <section class="d-flex page-break-avoid">
+            <div class="p-3" style="border: 1px solid black; width: 80%;">
+                  <p>Clients Acceptance: Please Sign and Stamp this quote and mail it back to us on</p>
+                  <p class="m-0">I / We confirm that the payment will be made via</p>
+                  <div class="my-3 ms-2">
+                    <input type="checkbox" style="transform: scale(2); accent-color: #35A548; "> <label class="ms-3" for="">Bank Transfer/Deposit</label>
+                  </div>
+                  <div class="my-3 ms-2">
+                    <input type="checkbox" style="transform: scale(2); accent-color: #35A548;"> <label class="ms-3" for="">Credit Card Link</label>
+                  </div>
+
+                  <div class="my-3 ms-2">
+                    <input type="checkbox" style="transform: scale(2); accent-color: #35A548;"> <label class="ms-3" for="">Cheque</label>
+                  </div>
+                  
+                  <br>
+                  <p class="m-0">I/We accept the Terms and Conditions, as specified on website are understood and acceptable to us</p>
+            </div>
+            <div class="p-3" style="border: 1px solid black; border-left: none; width: 30%;">
+                <small class="fw-bold text-decoration-underline">Approved By:</small>
+                <br>
+
+                <small class="fw-bold text-decoration-underline">Name:</small>
+                <br>
+                <hr style="border: none; border-top: 1px solid black;">
+
+                <small class="fw-bold text-decoration-underline">Designation</small>
+                <br><br>
+                <hr style="border: none; border-top: 1px solid black;">
+                <small class="fw-bold text-decoration-underline">(Signature with Stamp) </small>
+                <br><br>
+
+            </div>
+        </section><br><br>
+        <!-- <footer class="d-flex justify-content-between">
+            <p class="fw-bold">Page 1 of 1</p>
+            <p class="fw-bold">Tax Invoice</p>
+            <p class="fw-bold">21 Jul 2025 12:17</p>
+        </footer> -->
+    </main> 
+    
+</body>
+</html>
+<%
+
+}%>

@@ -27,8 +27,99 @@ table.table-borderless  tr  td{
     padding: 0px !important;
 }
 
+#maintable.table-borderless > tbody > tr  td{
+    padding: 10px !important;
+}
+
 td.text-end,
 th.text-end{
     padding-top: 1px !important;
     padding-bottom: 1px !important;
+}
+
+
+.page-break-avoid {
+    page-break-inside: avoid; 
+    break-inside: avoid;   
+       
+}
+
+#event-name{
+  width: 200px;
+}
+
+@media print {
+	@page {
+        margin-top: 50px;
+        margin-bottom: 50px;
+  }
+	@page :first {
+        margin-top: 0; 
+  }
+	p {
+        font-size: 12px; 
+  }
+	li{
+        font-size: 12px;
+  }
+	body {
+        font-size: 8px; 
+  }
+
+  table {
+      font-size: 10px;
+  }
+    .page-break-avoid {
+        page-break-inside: avoid; 
+        break-inside: avoid; 
+		
+    }
+    * {
+    -webkit-print-color-adjust: exact !important; /* For Chrome, Edge, Safari */
+    print-color-adjust: exact !important;        /* Standard property */
+    color-adjust: exact !important;              /* Older support */
+  }
+
+  #event-name{
+  width: 150px;
+}
+}
+
+
+.table-rounded {
+  border-collapse: separate;
+  border-spacing: 0;
+  /* border: 1px solid #dee2e6; */
+  border-radius: 10px; /* adjust as needed */
+  overflow: hidden; /* keeps corners clean */
+}
+
+#maintable{
+  box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
+}
+
+#topsvg{
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  z-index: -50;
+}
+
+#subtotalsvg{
+  position: absolute;
+  top: -80px;
+  right: -10px;
+  z-index: -500;
+  transform: rotate(50deg);
+}
+
+.table,
+.table th ,
+.table td {
+  background-color: transparent !important;
+}
+
+.table,
+.table th {
+  color: white !important;
 }

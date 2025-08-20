@@ -1,0 +1,1122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rental Management Dashboard</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+    <link rel="stylesheet" href="styles.css">
+
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand fw-bold" href="#">
+                <i class="fas fa-clipboard-list me-2"></i>
+                Rental Management Dashboard
+            </a>
+            <div class="navbar-nav ms-auto">
+                <span class="navbar-text text-white">
+                    <i class="fas fa-user-circle me-2"></i>
+                    Admin User
+                </span>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container-fluid px-4 py-4">
+        <!-- 1. Header Section - KPI Cards -->
+        <div class="five-cols mb-3">
+            <div class="col-5th">
+                <div class="card kpi-card">
+                    <div class="kpi-number">248</div>
+                    <div class="kpi-label">Leads This Month</div>
+                </div>
+            </div>
+            <div class="col-5th">
+                <div class="card kpi-card success">
+                    <div class="kpi-number">156</div>
+                    <div class="kpi-label">Quotations Sent</div>
+                </div>
+            </div>
+            <div class="col-5th">
+                <div class="card kpi-card info">
+                    <div class="kpi-number">87</div>
+                    <div class="kpi-label">Confirmed Bookings</div>
+                </div>
+            </div>
+            <div class="col-5th">
+                <div class="card kpi-card warning">
+                    <div class="kpi-number">142</div>
+                    <div class="kpi-label">Active Rentals</div>
+                </div>
+            </div>
+            <div class="col-5th">
+                <div class="card kpi-card">
+                    <div class="kpi-number">23</div>
+                    <div class="kpi-label">Setups Scheduled Today</div>
+                </div>
+            </div>
+            <div class="col-5th">
+                <div class="card kpi-card success">
+                    <div class="kpi-number">18</div>
+                    <div class="kpi-label">Dispatches Today</div>
+                </div>
+            </div>
+            <div class="col-5th">
+                <div class="card kpi-card">
+                    <div class="kpi-number">₹12.5L</div>
+                    <div class="kpi-label">Revenue Collected (MTD)</div>
+                </div>
+            </div>
+            <div class="col-5th">
+                <div class="card kpi-card danger">
+                    <div class="kpi-number">₹2.1L</div>
+                    <div class="kpi-label">Outstanding Payments</div>
+                </div>
+            </div>
+            <div class="col-5th">
+                <div class="card kpi-card warning">
+                    <div class="kpi-number">15</div>
+                    <div class="kpi-label">Low Stock Items</div>
+                </div>
+            </div>
+            <div class="col-5th">
+                <div class="card kpi-card danger">
+                    <div class="kpi-number">8</div>
+                    <div class="kpi-label">Damage Reports</div>
+                </div>
+            </div>
+        </div>
+
+
+
+        <!-- 2. Lead & Booking Funnel -->
+        <div class="row mb-4">
+            <div class="col-lg-6">
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="section-title mb-0">Lead & Booking Funnel</h5>
+                    </div>
+                    <div class="card-body container text-center">
+
+                       
+                        <div class="funnel">
+                            <!-- Funnel Shapes -->
+                            <div class="funnel-shapes">
+                                <div class="funnel-step">New</div>
+                                <div class="funnel-step">Contacted</div>
+                                <div class="funnel-step">Quoted</div>
+                                <div class="funnel-step">On Rent</div>
+                                <div class="funnel-step">Quoted</div>
+                                <div class="funnel-step">On Rent</div>
+                            </div>
+
+                            <!-- Funnel Data -->
+                            <div class="funnel-data">
+                                <div><span>Leads</span> <strong>18</strong></div>
+                                <div><span>Quoted</span> <strong>2</strong></div>
+                                <div><span>Booked</span> <strong>un</strong></div>
+                                
+                            </div>
+                        </div>
+                       
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="section-title mb-0">Booking Metrics</h5>
+                    </div>
+                    <div class="card-body">
+                        <table class="table metric-table">
+                            <tbody>
+                                <tr>
+                                    <td><strong>Total Bookings (MTD)</strong></td>
+                                    <td>87</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Avg. Booking Value</strong></td>
+                                    <td>₹14,500</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Most Booked Event Type</strong></td>
+                                    <td>Wedding</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Top Item Booked</strong></td>
+                                    <td>Round Tables</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 3. Inventory Summary -->
+        <div class="row mb-4">
+            <div class="col-lg-8">
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="section-title mb-0">Inventory Summary</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="row g-3">
+                            <div class="col-md-4">
+                                <div class="bg-light p-3 rounded text-center">
+                                    <h6>Quantity in Hand</h6>
+                                    <div class="h4 text-primary">1,245</div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="bg-light p-3 rounded text-center">
+                                    <h6>Quantity Reserved</h6>
+                                    <div class="h4 text-warning">342</div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="bg-light p-3 rounded text-center">
+                                    <h6>To be Returned</h6>
+                                    <div class="h4 text-info">89</div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="bg-light p-3 rounded text-center">
+                                    <h6>Under Maintenance</h6>
+                                    <div class="h4 text-secondary">23</div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="bg-light p-3 rounded text-center">
+                                    <h6>Low Stock Items</h6>
+                                    <div class="h4 text-danger">15</div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="bg-light p-3 rounded text-center">
+                                    <h6>Damaged Items</h6>
+                                    <div class="h4 text-danger">8</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="section-title mb-0">Inventory Status</h5>
+                    </div>
+                    <div class="card-body">
+                        <figure class="pie-chart">
+                            
+                            <figcaption>
+                                Available 38<span style="color:#4dc34b"></span><br>
+                                Rented  23<span style="color:#324ccd"></span><br>
+                                Damaged  16<span style="color:#e15759"></span><br>
+                                Maintenance 10<span style="color:#fdc13f"></span>
+                            </figcaption>
+                            
+                        </figure>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 4. Dispatch & Setup Section -->
+        <div class="row mb-4">
+            <div class="col-lg-6">
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="section-title mb-0">Dispatch Metrics</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="row g-3 mb-3">
+                            <div class="col-6">
+                                <div class="bg-primary bg-opacity-10 p-3 rounded text-center">
+                                    <h6>Dispatches Today</h6>
+                                    <div class="h4 text-primary">18</div>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="bg-success bg-opacity-10 p-3 rounded text-center">
+                                    <h6>Vehicle Allocated</h6>
+                                    <div class="h4 text-success">15</div>
+                                </div>
+                            </div>
+                        </div>
+                        <canvas id="dispatchChart" style="height: 200px;"></canvas>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="section-title mb-0">Setup Metrics</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="row g-3 mb-3">
+                            <div class="col-6">
+                                <div class="bg-info bg-opacity-10 p-3 rounded text-center">
+                                    <h6>Setups Today</h6>
+                                    <div class="h4 text-info">23</div>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="bg-warning bg-opacity-10 p-3 rounded text-center">
+                                    <h6>Team Assigned</h6>
+                                    <div class="h4 text-warning">19</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="table-responsive">
+                            <table class="table table-sm">
+                                <thead>
+                                    <tr>
+                                        <th>Client</th>
+                                        <th>Time</th>
+                                        <th>Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Wedding Co.</td>
+                                        <td>10:00 AM</td>
+                                        <td><span class="status-badge status-completed">Complete</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Corporate Event</td>
+                                        <td>2:00 PM</td>
+                                        <td><span class="status-badge status-pending">Pending</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Birthday Party</td>
+                                        <td>4:00 PM</td>
+                                        <td><span class="status-badge status-pending">Pending</span></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 5. Finance Overview -->
+        <div class="row mb-4">
+            <div class="col-lg-6">
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="section-title mb-0">Invoice Summary</h5>
+                    </div>
+                    <div class="card-body">
+                        <table class="table metric-table">
+                            <tbody>
+                                <tr>
+                                    <td><strong>Invoices Raised (MTD)</strong></td>
+                                    <td>156</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Paid</strong></td>
+                                    <td class="text-success">142</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Unpaid</strong></td>
+                                    <td class="text-danger">12</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Partial</strong></td>
+                                    <td class="text-warning">2</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Damage Charges Invoiced</strong></td>
+                                    <td>₹45,000</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="section-title mb-0">Payment Summary</h5>
+                    </div>
+                    <div class="card-body">
+                        <table class="table metric-table">
+                            <tbody>
+                                <tr>
+                                    <td><strong>Total Collected (MTD)</strong></td>
+                                    <td>₹12.5L</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Outstanding Payments</strong></td>
+                                    <td class="text-danger">₹2.1L</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Refunds Processed</strong></td>
+                                    <td>₹18,500</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <canvas id="paymentModeChart" style="height: 150px;"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 6. Sales Order Overview -->
+        <div class="row mb-4">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="section-title mb-0">Sales Order Overview</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table metric-table">
+                                <thead>
+                                    <tr>
+                                        <th>Channel</th>
+                                        <th>Draft</th>
+                                        <th>Confirmed</th>
+                                        <th>Packed</th>
+                                        <th>Dispatched</th>
+                                        <th>Invoiced</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><strong>Zoho Commerce</strong></td>
+                                        <td>15</td>
+                                        <td>32</td>
+                                        <td>28</td>
+                                        <td>25</td>
+                                        <td>23</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Direct Sales</strong></td>
+                                        <td>8</td>
+                                        <td>45</td>
+                                        <td>42</td>
+                                        <td>38</td>
+                                        <td>36</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 7. Return & Damage Management -->
+        <div class="row mb-4">
+            <div class="col-lg-6">
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="section-title mb-0">Return & Damage Overview</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="row g-3">
+                            <div class="col-6">
+                                <div class="bg-info bg-opacity-10 p-3 rounded text-center">
+                                    <h6>Items Returned This Month</h6>
+                                    <div class="h4 text-info">98</div>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="bg-danger bg-opacity-10 p-3 rounded text-center">
+                                    <h6>Items Marked Damaged</h6>
+                                    <div class="h4 text-danger">8</div>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="bg-warning bg-opacity-10 p-3 rounded text-center">
+                                    <h6>Auto-Invoices for Damage</h6>
+                                    <div class="h4 text-warning">5</div>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="bg-secondary bg-opacity-10 p-3 rounded text-center">
+                                    <h6>Rejected Returns</h6>
+                                    <div class="h4 text-secondary">2</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="section-title mb-0">Recent Returns</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-sm">
+                                <thead>
+                                    <tr>
+                                        <th>Item</th>
+                                        <th>Client</th>
+                                        <th>Status</th>
+                                        <th>Date</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Round Table</td>
+                                        <td>Wedding Co.</td>
+                                        <td><span class="status-badge status-completed">Returned</span></td>
+                                        <td>Today</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Chairs (50)</td>
+                                        <td>Corporate Ltd.</td>
+                                        <td><span class="status-badge status-pending">Pending</span></td>
+                                        <td>Today</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Stage Setup</td>
+                                        <td>Event Mgmt</td>
+                                        <td><span class="status-badge status-overdue">Overdue</span></td>
+                                        <td>Yesterday</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 8. Purchase & Vendor Management -->
+        <div class="row mb-4">
+            <div class="col-lg-6">
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="section-title mb-0">Purchase Overview</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="row g-3">
+                            <div class="col-6">
+                                <div class="bg-primary bg-opacity-10 p-3 rounded text-center">
+                                    <h6>Purchase Orders Raised</h6>
+                                    <div class="h4 text-primary">12</div>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="bg-success bg-opacity-10 p-3 rounded text-center">
+                                    <h6>Items Received</h6>
+                                    <div class="h4 text-success">145</div>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="bg-info bg-opacity-10 p-3 rounded text-center">
+                                    <h6>Vendors Paid This Month</h6>
+                                    <div class="h4 text-info">8</div>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="bg-warning bg-opacity-10 p-3 rounded text-center">
+                                    <h6>Procurement Cost (MTD)</h6>
+                                    <div class="h4 text-warning">₹3.2L</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="section-title mb-0">Recent Purchase Orders</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-sm">
+                                <thead>
+                                    <tr>
+                                        <th>PO #</th>
+                                        <th>Vendor</th>
+                                        <th>Status</th>
+                                        <th>Amount</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>PO001</td>
+                                        <td>Furniture Pro</td>
+                                        <td><span class="status-badge status-completed">GRN Done</span></td>
+                                        <td>₹45,000</td>
+                                    </tr>
+                                    <tr>
+                                        <td>PO002</td>
+                                        <td>Event Supplies</td>
+                                        <td><span class="status-badge status-pending">Pending</span></td>
+                                        <td>₹32,500</td>
+                                    </tr>
+                                    <tr>
+                                        <td>PO003</td>
+                                        <td>Decor Plus</td>
+                                        <td><span class="status-badge status-completed">Billed</span></td>
+                                        <td>₹18,750</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 9. Staff & Task Monitoring -->
+        <div class="row mb-4">
+            <div class="col-lg-6">
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="section-title mb-0">Task Overview</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="row g-3 mb-3">
+                            <div class="col-6">
+                                <div class="bg-warning bg-opacity-10 p-3 rounded text-center">
+                                    <h6>Total Open Tasks</h6>
+                                    <div class="h4 text-warning">47</div>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="bg-success bg-opacity-10 p-3 rounded text-center">
+                                    <h6>Tasks Completed Today</h6>
+                                    <div class="h4 text-success">32</div>
+                                </div>
+                            </div>
+                        </div>
+                        <canvas id="taskChart" style="height: 200px;"></canvas>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="section-title mb-0">Staff Performance</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="row g-3 mb-3">
+                            <div class="col-6">
+                                <div class="bg-info bg-opacity-10 p-3 rounded text-center">
+                                    <h6>Top Performer Today</h6>
+                                    <div class="h6 text-info">Rajesh Kumar</div>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="bg-danger bg-opacity-10 p-3 rounded text-center">
+                                    <h6>Most Delayed Staff</h6>
+                                    <div class="h6 text-danger">Amit Singh</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="table-responsive">
+                            <table class="table table-sm">
+                                <thead>
+                                    <tr>
+                                        <th>Staff</th>
+                                        <th>Assigned</th>
+                                        <th>Completed</th>
+                                        <th>Pending</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Rajesh Kumar</td>
+                                        <td>8</td>
+                                        <td class="text-success">7</td>
+                                        <td class="text-warning">1</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Priya Sharma</td>
+                                        <td>6</td>
+                                        <td class="text-success">5</td>
+                                        <td class="text-warning">1</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Amit Singh</td>
+                                        <td>7</td>
+                                        <td class="text-success">3</td>
+                                        <td class="text-danger">4</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 10. Alerts & Notifications -->
+        <div class="row mb-4">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="section-title mb-0">
+                            <i class="fas fa-bell me-2"></i>
+                            Alerts & Notifications
+                        </h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="alert-panel">
+                            <div class="alert-item">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div>
+                                        <strong>Overdue Rental</strong> - Wedding Co. rental overdue by 2 days
+                                    </div>
+                                    <small class="text-muted">2 hours ago</small>
+                                </div>
+                            </div>
+                            <div class="alert-item">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div>
+                                        <strong>Low Stock Alert</strong> - Round tables below reorder level (5 remaining)
+                                    </div>
+                                    <small class="text-muted">4 hours ago</small>
+                                </div>
+                            </div>
+                            <div class="alert-item">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div>
+                                        <strong>Pending Approval</strong> - Quote #QT1045 awaiting approval
+                                    </div>
+                                    <small class="text-muted">6 hours ago</small>
+                                </div>
+                            </div>
+                            <div class="alert-item">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div>
+                                        <strong>Damage Report</strong> - 3 chairs reported damaged from Event #EV234
+                                    </div>
+                                    <small class="text-muted">8 hours ago</small>
+                                </div>
+                            </div>
+                            <div class="alert-item">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div>
+                                        <strong>Payment Overdue</strong> - Invoice #INV1234 overdue by 18 days (₹25,000)
+                                    </div>
+                                    <small class="text-muted">1 day ago</small>
+                                </div>
+                            </div>
+                            <div class="alert-item">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div>
+                                        <strong>Task Delayed</strong> - Setup task for Corporate Event delayed by 4 days
+                                    </div>
+                                    <small class="text-muted">1 day ago</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 11. Graphical Zone (Bottom) -->
+        <div class="row mb-4">
+            <div class="col-lg-6">
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="section-title mb-0">Daily Revenue Trend</h5>
+                    </div>
+                    <div class="card-body">
+                        <canvas id="revenueChart" class="chart-container"></canvas>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="section-title mb-0">Bookings by Event Type</h5>
+                    </div>
+                    <div class="card-body">
+                        <canvas id="eventTypeChart" class="chart-container"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row mb-4">
+            <div class="col-lg-6">
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="section-title mb-0">Lead to Booking Flow</h5>
+                    </div>
+                    <div class="card-body">
+                        <canvas id="funnelChart" class="chart-container"></canvas>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="section-title mb-0">Monthly Performance Overview</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="row g-3">
+                            <div class="col-4">
+                                <div class="text-center">
+                                    <div class="h3 text-primary">87</div>
+                                    <small class="text-muted">Bookings MTD</small>
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <div class="text-center">
+                                    <div class="h3 text-success">₹12.5L</div>
+                                    <small class="text-muted">Revenue MTD</small>
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <div class="text-center">
+                                    <div class="h3 text-info">94%</div>
+                                    <small class="text-muted">Customer Satisfaction</small>
+                                </div>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row g-3">
+                            <div class="col-6">
+                                <div class="text-center">
+                                    <div class="h4 text-warning">15</div>
+                                    <small class="text-muted">Items Low Stock</small>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="text-center">
+                                    <div class="h4 text-danger">8</div>
+                                    <small class="text-muted">Damage Reports</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <!-- <script>
+        // Chart.js configurations
+        Chart.defaults.font.family = "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif";
+        Chart.defaults.color = '#64748b';
+
+        // 1. Inventory Pie Chart
+        const inventoryPieCtx = document.getElementById('inventoryPieChart').getContext('2d');
+        new Chart(inventoryPieCtx, {
+            type: 'doughnut',
+            data: {
+                labels: ['Available', 'Rented', 'Damaged', 'Maintenance'],
+                datasets: [{
+                    data: [1245, 342, 8, 23],
+                    backgroundColor: ['#16a34a', '#0891b2', '#dc2626', '#d97706'],
+                    borderWidth: 2,
+                    borderColor: '#fff'
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        position: 'bottom',
+                        labels: {
+                            padding: 15,
+                            usePointStyle: true
+                        }
+                    }
+                }
+            }
+        });
+
+        // 2. Dispatch Chart
+        const dispatchCtx = document.getElementById('dispatchChart').getContext('2d');
+        new Chart(dispatchCtx, {
+            type: 'bar',
+            data: {
+                labels: ['Truck', 'Van', 'Pickup', 'Bike'],
+                datasets: [{
+                    label: 'Dispatches',
+                    data: [8, 5, 3, 2],
+                    backgroundColor: '#2563eb',
+                    borderRadius: 4
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        grid: {
+                            color: '#e2e8f0'
+                        }
+                    },
+                    x: {
+                        grid: {
+                            display: false
+                        }
+                    }
+                },
+                plugins: {
+                    legend: {
+                        display: false
+                    }
+                }
+            }
+        });
+
+        // 3. Payment Mode Chart
+        const paymentCtx = document.getElementById('paymentModeChart').getContext('2d');
+        new Chart(paymentCtx, {
+            type: 'bar',
+            data: {
+                labels: ['UPI', 'Bank Transfer', 'Cash', 'Card'],
+                datasets: [{
+                    label: 'Amount (₹L)',
+                    data: [6.5, 4.2, 1.3, 0.5],
+                    backgroundColor: ['#16a34a', '#0891b2', '#d97706', '#dc2626'],
+                    borderRadius: 4
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        grid: {
+                            color: '#e2e8f0'
+                        }
+                    },
+                    x: {
+                        grid: {
+                            display: false
+                        }
+                    }
+                },
+                plugins: {
+                    legend: {
+                        display: false
+                    }
+                }
+            }
+        });
+
+        // 4. Task Chart
+        const taskCtx = document.getElementById('taskChart').getContext('2d');
+        new Chart(taskCtx, {
+            type: 'bar',
+            data: {
+                labels: ['Rajesh', 'Priya', 'Amit', 'Sunita', 'Ravi'],
+                datasets: [{
+                    label: 'Completed',
+                    data: [7, 5, 3, 6, 4],
+                    backgroundColor: '#16a34a'
+                }, {
+                    label: 'Pending',
+                    data: [1, 1, 4, 2, 3],
+                    backgroundColor: '#d97706'
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    x: {
+                        stacked: true,
+                        grid: {
+                            display: false
+                        }
+                    },
+                    y: {
+                        stacked: true,
+                        beginAtZero: true,
+                        grid: {
+                            color: '#e2e8f0'
+                        }
+                    }
+                },
+                plugins: {
+                    legend: {
+                        position: 'top'
+                    }
+                }
+            }
+        });
+
+        // 5. Revenue Chart
+        const revenueCtx = document.getElementById('revenueChart').getContext('2d');
+        new Chart(revenueCtx, {
+            type: 'line',
+            data: {
+                labels: ['1 Aug', '5 Aug', '10 Aug', '15 Aug', '20 Aug', '25 Aug', '30 Aug'],
+                datasets: [{
+                    label: 'Daily Revenue (₹)',
+                    data: [45000, 52000, 48000, 61000, 55000, 67000, 58000],
+                    borderColor: '#2563eb',
+                    backgroundColor: 'rgba(37, 99, 235, 0.1)',
+                    fill: true,
+                    tension: 0.4,
+                    borderWidth: 3
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        grid: {
+                            color: '#e2e8f0'
+                        },
+                        ticks: {
+                            callback: function(value) {
+                                return '₹' + (value/1000) + 'k';
+                            }
+                        }
+                    },
+                    x: {
+                        grid: {
+                            display: false
+                        }
+                    }
+                },
+                plugins: {
+                    legend: {
+                        display: false
+                    }
+                }
+            }
+        });
+
+        // 6. Event Type Chart
+        const eventTypeCtx = document.getElementById('eventTypeChart').getContext('2d');
+        new Chart(eventTypeCtx, {
+            type: 'bar',
+            data: {
+                labels: ['Wedding', 'Corporate', 'Birthday', 'Anniversary', 'Other'],
+                datasets: [{
+                    label: 'Bookings',
+                    data: [35, 28, 15, 6, 3],
+                    backgroundColor: ['#dc2626', '#2563eb', '#16a34a', '#d97706', '#0891b2'],
+                    borderRadius: 4
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        grid: {
+                            color: '#e2e8f0'
+                        }
+                    },
+                    x: {
+                        grid: {
+                            display: false
+                        }
+                    }
+                },
+                plugins: {
+                    legend: {
+                        display: false
+                    }
+                }
+            }
+        });
+
+        // 7. Funnel Chart
+        const funnelCtx = document.getElementById('funnelChart').getContext('2d');
+        new Chart(funnelCtx, {
+            type: 'bar',
+            data: {
+                labels: ['Leads', 'Contacted', 'Quoted', 'Booked', 'On Rent', 'Returned'],
+                datasets: [{
+                    label: 'Count',
+                    data: [248, 198, 156, 87, 142, 98],
+                    backgroundColor: [
+                        '#2563eb',
+                        '#0891b2',
+                        '#16a34a',
+                        '#d97706',
+                        '#dc2626',
+                        '#6b7280'
+                    ],
+                    borderRadius: 4
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                indexAxis: 'y',
+                scales: {
+                    x: {
+                        beginAtZero: true,
+                        grid: {
+                            color: '#e2e8f0'
+                        }
+                    },
+                    y: {
+                        grid: {
+                            display: false
+                        }
+                    }
+                },
+                plugins: {
+                    legend: {
+                        display: false
+                    }
+                }
+            }
+        });
+
+        // Auto-refresh dashboard every 5 minutes
+        setInterval(() => {
+            console.log('Dashboard auto-refresh triggered');
+            // In real implementation, this would fetch fresh data
+        }, 300000);
+
+        // Add some interactive hover effects
+        document.querySelectorAll('.kpi-card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-2px)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0)';
+            });
+        });
+
+        // Simulate real-time updates for demo
+        function simulateRealTimeUpdate() {
+            const kpiNumbers = document.querySelectorAll('.kpi-number');
+            kpiNumbers.forEach(element => {
+                if (Math.random() > 0.8) { // 20% chance of update
+                    element.style.color = '#16a34a';
+                    setTimeout(() => {
+                        element.style.color = 'var(--primary-color)';
+                    }, 1000);
+                }
+            });
+        }
+
+        // Run simulation every 10 seconds
+        setInterval(simulateRealTimeUpdate, 10000);
+    </script> -->
+</body>
+</html>
