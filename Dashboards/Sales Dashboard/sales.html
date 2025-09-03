@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rental Management Dashboard</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+    <!-- <link rel="stylesheet" href="styles.css"> -->
+
+
+    <link rel="stylesheet" href="path/to/your/charts.min.css">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+
+</head>
+<body>
+    <style>
+        :root {
+            --primary-color: #2563eb;
+            --success-color: #16a34a;
+            --warning-color: #d97706;
+            --danger-color: #dc2626;
+            --info-color: #0891b2;
+            --light-bg: #f8fafc;
+            --card-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+        }
+        .kpi-card.lead1 { border-left-color: #e74c3c; }
+        .kpi-card.contact1 { border-left-color: #f39c12; }
+        .kpi-card.account1 { border-left-color: #1abc9c; }
+        .kpi-card.deal1 { border-left-color: #3b5998; }
+        .kpi-card.raised1 { border-left-color: #9b59b6;}
+        .kpi-card.approved1 { border-left-color: #a05616; }
+        .kpi-card.rental1 { border-left-color: #2ecc71; }
+
+        .text-lead { color: #e74c3c; }
+        .text-contact { color: #f39c12; }
+        .text-account { color: #1abc9c; }
+        .text-deal { color: #3b5998; }
+        .text-raised { color: #9b59b6;}
+        .text-approved { color: #a05616; }
+        .text-rental{ color: #2ecc71; }
+
+    .kpi-card {
+        text-align: center;
+        padding: 10px 0;
+        border-radius: 8px;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        border-left: 4px solid var(--primary-color);
+        overflow: hidden;
+        /* height: 150px; */
+    }
+     .five-cols {
+        display: flex;
+        flex-wrap: wrap;
+        margin: -5px;
+    }
+    .five-cols > .col-5th {
+        flex: 0 0 20%;
+        max-width: 20%;
+        padding: 5px;
+    }
+
+    .kpi-number {
+        font-size: 20px;
+        font-weight: bold;
+    }
+    .kpi-label {
+        font-size: 12px;
+        color: #666;
+    }
+    .card:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    }
+
+    /* bar chart 0 */
+    .bar-chart {
+      display: flex;
+      align-items: flex-end;  /* align bars at bottom */
+      justify-content: space-around;
+      height: 300px;
+      max-width: 700px;
+      margin: 40px auto;
+      font-family: Arial, sans-serif;
+    }
+
+    .bar-col {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-end;
+      height: 100%;
+      flex: 1;
+      margin: 0 10px;
+      /* background: red; */
+    }
+
+    .bar {
+      width: 50px;
+      background: #ff4e4e;
+      border-radius: 4px 4px 0 0;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: flex-end;
+
+    }
+
+    .bar-fill {
+      width: 100%;
+      display: block;
+      border-radius: 4px 4px 0 0;
+      height: 500px;
+      
+    }
+
+    .bar-label {
+      margin-top: 8px;
+      font-size: 14px;
+      font-weight: bold;
+      text-align: center;
+    }
+
+
+    .bar-1 { height: 30px; background: #e74c3c; }
+    .bar-2 { height: 140px; background: #f39c12; }
+    .bar-3 { height: 200px; background: #1abc9c; }
+    .bar-4 { height: 60px; background: #3b5998; }
+    .bar-5 { height: 100px; background: #9b59b6; } 
+    .bar-6 { height: 120px; background: #a05616; } 
+    .bar-7 { height: 80px; background: #2ecc71; } 
+
+
+    .icon{
+        position: absolute;
+        right: -18px;
+        
+        top: -10px;
+        /* background-color: greenyellow; */
+        padding: 30px 25px;
+        border-radius: 50%;
+    }
+
+    .icon.lead {
+        background-color: #ff8e827d;
+        color: #e74c3c;
+    }
+    .icon.contact {
+        background-color: #f8cc857e;;
+        color: #f39c12;;
+    }
+    .icon.account {
+        background-color: #9effec70;;
+        color: #1abc9c;;
+    }
+    .icon.deal {
+        background-color: #94b6ff74;;
+        color: #3b5998;;
+    }
+    .icon.raised {
+        background-color: #e092ff7e; 
+        color:#9b59b6; 
+    }
+    .icon.approved {
+        background-color:#ffc6937d;
+        color: #a05616;
+    }
+    .icon.rental {
+        background-color: #8cffbc77;
+        color: #2ecc71;
+    }
+
+    .icon > i{
+        font-size: 40px;
+        /* color: white; */
+    }
+    
+    </style>
+
+    <main class="container-fluid px-4 py-4">
+
+        <section style="border-bottom: 1px solid rgba(128, 128, 128, 0.449); ">
+            <h1 class="">Sales Dashboard</h1> 
+        </section> <br>
+
+        <section class="account-summery row g-3 mb-3">
+
+            <div class="col-md-3">
+                <div class="card kpi-card lead1 p-3 rounded text-center" >
+                    <h6>No. of Leads</h6>
+                    <div class="h4 text-lead">78</div>
+                    <div class="icon lead"><i class="bi bi-person-plus-fill"></i></div>
+                </div>
+            </div>
+            
+            <div class="col-md-3">
+                <div class="card kpi-card contact1 p-3 rounded text-center">
+                    <h6>No. of Contacts</h6>
+                    <div class="h4 text-contact">43</div>
+                    <div class="icon contact"><i class="bi bi-person-lines-fill"></i></div>
+                </div>
+            </div>
+
+            <div class="col-md-3">
+                <div class="card kpi-card account1 p-3 rounded text-center">
+                    <h6>No. of Accounts</h6>
+                    <div class="h4 text-account">78</div>
+                    <div class="icon account"><i class="bi bi-building"></i></div>
+                </div>
+            </div>
+
+            <div class="col-md-3">
+                <div class="card kpi-card deal1 p-3 rounded text-center">
+                    <h6>No. of Deals</h6>
+                    <div class="h4 text-deal">43</div>
+                    <div class="icon deal"><i class="bi bi-people-fill"></i></div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card kpi-card p-3 raised1 rounded text-center">
+                    <h6>No. of Quotation Raised</h6>
+                    <div class="h4 text-raised">78</div>
+                    <div class="icon raised"><i class="bi bi-file-earmark-text"></i></div>
+                </div>
+            </div>
+            
+            <div class="col-md-4">
+                <div class="card kpi-card p-3 approved1 rounded text-center">
+                    <h6>No. of Approved Quotation</h6>
+                    <div class="h4 text-approved">43</div>
+                    <div class="icon approved"><i class="bi bi-check2-circle"></i></div>
+                </div>
+            </div> 
+
+            <div class="col-md-4">
+                <div class="card kpi-card rental1 p-3 rounded text-center">
+                    <h6>No. of Rental Purchase</h6>
+                    <div class="h4 text-rental">43</div>
+                    <div class="icon rental"><i class="bi bi-bag-check"></i></div>
+                </div>
+            </div>
+            
+        </section>
+
+
+        <section class="row gap-4">
+            
+            
+
+            <div class="card col-lg-6">
+
+                <div class="bar-chart">
+                <div class="bar-col">
+                    <div class="bar"><span class="bar-fill bar-1"></span></div>
+                    <div class="bar-label">Leads</div>
+                </div>
+                <div class="bar-col">
+                    <div class="bar"><span class="bar-fill bar-2"></span></div>
+                    <div class="bar-label">Contact</div>
+                </div>
+                <div class="bar-col">
+                    <div class="bar"><span class="bar-fill bar-3"></span></div>
+                    <div class="bar-label">Account</div>
+                </div>
+                <div class="bar-col">
+                    <div class="bar"><span class="bar-fill bar-4"></span></div>
+                    <div class="bar-label">Deals</div>
+                </div>
+                <div class="bar-col">
+                    <div class="bar"><span class="bar-fill bar-5"></span></div>
+                    <div class="bar-label">Qt Raised</div>
+                </div>
+                <div class="bar-col">
+                    <div class="bar"><span class="bar-fill bar-6"></span></div>
+                    <div class="bar-label">App Quote</div>
+                </div>
+                <div class="bar-col">
+                    <div class="bar"><span class="bar-fill bar-7"></span></div>
+                    <div class="bar-label">Rental</div>
+                </div>
+            </div>
+			
+			</div>
+
+            <div class="col-lg-5 text-center" style="align-content: center;">
+                <h4>Rental Calendar</h4>
+                <img width="300px" src="calander.png" alt=""> <br>
+                <button class="btn btn-primary" >Open</button>
+            </div>
+
+        </section>
+                    
+               
+        
+        
+
+        
+       
+    </main>
+
+    
+</body>
+</html>
